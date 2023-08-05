@@ -19,4 +19,48 @@ This repository documents how one can generate a [nanoHUB](https://nanohub.org/)
 <img src="./images/register_tool_sec2.png" width="60%">
 <img src="./images/register_tool_sec3.png" width="80%">
 
-5. Donwload the latest release of this sample nanoHUB [worms app](https://github.com/rheiland/pcworms/releases) and unzip it into the folder in step 2.
+5. Download the latest release of this sample nanoHUB [worms app](https://github.com/rheiland/pcworms/releases) and unzip it into the folder in step 2, then perform the following steps (all commands show here are for a Unix-type shell; substitute with appropriate Windows commands as needed):
+```
+~/git/pczombies$ unzip pcworms-0.1.zip
+~/git/pczombies$ cd pcworms-0.1
+```
+Next,  delete the README.md and then move the contents of the `pcworms-x.x` up into the your repo's root, e.g., `pczombies`:
+```
+~/git/pczombies/pcworms-0.1$ rm README.md 
+~/git/pczombies/pcworms-0.1$ mv *  ..
+```
+Confirm your folder has the desired files and subdirectories and then do some clean up, e.g.
+```
+~/git/pczombies/pcworms-0.1$ cd ..
+~/git/pczombies$ ls
+README.md		data/			rules0.csv
+VERSION.txt		middleware/		src/
+bin/			pcworms-0.1/		tmpdir/
+config/			pcworms-0.1.zip
+
+~/git/pczombies$ rm pcworms*.zip
+~/git/pczombies$ rm -rf pcworms-0.1/
+```
+
+From the `src/custom_modules` directory, copy your original PhysiCell model's `custom_modules` files to here:
+```
+~/git/pczombies/src/custom_modules$ cp ~/PhysiCell/custom_modules/custom.h .
+~/git/pczombies/src/custom_modules$ cp ~/PhysiCell/custom_modules/custom.cpp .
+```
+From the `data` directory, copy your original PhysiCell model's configuration file, cells .csv, and rules .csv files to here, with specific names:
+```
+~/git/pczombies/data$ cp ~/PhysiCell/config/PhysiCell_settings.xml mymodel.xml
+~/git/pczombies/data$ cp ~/PhysiCell/config/cells.csv cells.csv
+~/git/pczombies/data$ cp ~/PhysiCell/config/cell_rules.csv cell_rules.csv
+```
+
+Edit the `middleware/invoke` file and change `pcworms` to the name of your app, e.g., `pczombies`
+
+6. Do a git `add`, `commit`, and `push` of the updated contents, e.g. (or however you perform github repo updates),
+```
+~/git/pczombies$ git add .
+~/git/pczombies$ git commit -m "updates"
+~/git/pczombies$ git push
+```
+7. Go to your nanoHUB app's `status` page (e.g., nanohub.org/tools/pczombies/status) and let them know you have updated your github repo and are ready to have them install it for testing by clicking the link that says "My code is committed, working, and ready to be installed" under the "We are waiting for you" section. You should receive an email telling you that the app's status has been updated. You then wait for another email (may takes mins or hours) to let you know it has been installed on nanoHUB (or maybe there was an error attempting to install it) and is ready for testing. After that email, return to the app's `status` page where you can launch it for testing. Once you are satisfied that it is working correctly, you can request that the app be "published" which means it will be publicly available for anyone with a nanoHUB account to run.
+
