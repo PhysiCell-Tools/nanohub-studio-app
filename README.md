@@ -18,3 +18,5 @@ This repository documents how one can generate a [nanoHUB](https://nanohub.org/)
 <img src="./images/register_tool_sec1.png" width="60%">
 <img src="./images/register_tool_sec2.png" width="60%">
 <img src="./images/register_tool_sec3.png" width="80%">
+
+5. Donwload the latest release of this sample nanoHUB [worms app](https://github.com/rheiland/pcworms/releases) and unzip it into the folder in step 2.
